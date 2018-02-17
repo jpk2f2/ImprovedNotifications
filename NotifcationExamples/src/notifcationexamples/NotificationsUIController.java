@@ -23,6 +23,7 @@ import taskers.*;
  * FXML Controller class
  *
  * @author dalemusser
+ * @altered by jasonkayser
  */
 public class NotificationsUIController implements Initializable, Notifiable {
 
