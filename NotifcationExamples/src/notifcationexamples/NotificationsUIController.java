@@ -88,18 +88,19 @@ public class NotificationsUIController implements Initializable, Notifiable {
             task2 = new Task2(2147483647, 1000000);
             task2.setOnNotification((String message) -> {
                 textArea.appendText(message + "\n");
-                if(message.equals("Task2 done.")){
-                    task2Button.setText("Start Task 2");
+                //check if task has finishes
+                if(message.equals("Task2 done.")){   
+                    task2Button.setText("Start Task 2"); //reset text
                     task2 = null;
                 }
             });
             
             task2.start();
-            task2Button.setText("End Task 2");
-        }else {
-            task2.end();
+            task2Button.setText("End Task 2"); //set new text value
+        }else { //if task is already runnig
+            task2.end(); //end task
             task2 = null;
-            task2Button.setText("Start Task 2");
+            task2Button.setText("Start Task 2");  //reset text
         }        
     }
     
@@ -111,9 +112,17 @@ public class NotificationsUIController implements Initializable, Notifiable {
             // this uses a property change listener to get messages
             task3.addPropertyChangeListener((PropertyChangeEvent evt) -> {
                 textArea.appendText((String)evt.getNewValue() + "\n");
+                if(((String)evt.getNewValue()).equals("Task3 done.")); //check if task is finished
+                    task3Button.setText("Start Task 3"); //reset text
+                    task3 = null; 
             });
             
             task3.start();
+            task3Button.setText("End Task 3"); //set new text
+        } else{
+            task3.end(); //end running task
+            task3 = null;
+            task3Button.setText("Start Task 3"); //reset text
         }
     } 
 }
